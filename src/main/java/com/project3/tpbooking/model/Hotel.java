@@ -38,8 +38,8 @@ public class Hotel {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="partner_id", nullable=false)
-    private Partner partner;
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name="province_id", nullable=false)

@@ -48,4 +48,7 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
+    @Column(name = "role")
+    private ERole role;
+
 }
