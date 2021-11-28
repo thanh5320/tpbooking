@@ -2,7 +2,7 @@ package com.project3.tpbooking.security.services;
 
 import com.project3.tpbooking.model.ERole;
 import com.project3.tpbooking.model.User;
-import com.project3.tpbooking.repository.UserRepository;
+import com.project3.tpbooking.repository.mysql.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

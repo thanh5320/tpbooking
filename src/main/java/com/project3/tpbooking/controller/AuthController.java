@@ -1,8 +1,8 @@
-package com.project3.tpbooking.controllers;
+package com.project3.tpbooking.controller;
 
 import com.project3.tpbooking.model.ERole;
 import com.project3.tpbooking.model.User;
-import com.project3.tpbooking.repository.UserRepository;
+import com.project3.tpbooking.repository.mysql.UserRepository;
 import com.project3.tpbooking.security.jwt.JwtUtils;
 import com.project3.tpbooking.security.payload.JwtResponse;
 import com.project3.tpbooking.security.payload.LoginRequest;

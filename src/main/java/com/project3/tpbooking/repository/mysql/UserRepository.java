@@ -1,4 +1,4 @@
-package com.project3.tpbooking.repository;
+package com.project3.tpbooking.repository.mysql;
 
 import com.project3.tpbooking.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
