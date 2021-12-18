@@ -53,7 +53,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest){
-        if(userRepository.existsByUserName(registerRequest.getUserName())){
+        if(userRepository.existsByUserName(registerRequest.getUsername())){
             return ResponseEntity.badRequest().body(new MessageResponse("Duplicate username"));
 
         }
@@ -74,7 +74,7 @@ public class AuthController {
                 role = ERole.ROLE_USER;
         }
 
-        User user = new User(0,registerRequest.getUserName(),
+        User user = new User(0,registerRequest.getUsername(),
                 encoder.encode(registerRequest.getPassword()),
                 registerRequest.getFullName(),
                 registerRequest.getEmail(),

@@ -1,9 +1,12 @@
 package com.project3.tpbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Accessors(chain = true)
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +46,7 @@ public class Reservation {
 
     @Column(name = "pay") // 1 đã thanh toán, 0 chưa thanh toán
     private Integer pay;
+
+    @Column(name = "status") // 1 đã đặt, 2 đã đến khách sạn, 0 đã hủy
+    private Integer status;
 }

@@ -20,7 +20,7 @@ public class HomeController {
         return DfResponse.okEntity(esService.home());
     }
 
-    @PostMapping({"", "/search"})
+    @PostMapping({"/search"})
     public ResponseEntity<?> search(@RequestBody HomeSearchRequest request){
         return DfResponse.okEntity(esService.search(request));
     }

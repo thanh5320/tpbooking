@@ -25,13 +25,13 @@ import java.util.stream.Collectors;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 @Repository
-public class HotelRepository {
+public class EsRepository {
     private final RestHighLevelClient client;
     private static final String index="hotel";
     private static final int sizePage = 10;
     private List<String> hotCities = List.of("Hà Nộ", "Hồ Chí Minh", "Đà Nẵng");
 
-    public HotelRepository(RestHighLevelClient client) {
+    public EsRepository(RestHighLevelClient client) {
         this.client = client;
     }
 
@@ -100,6 +100,28 @@ public class HotelRepository {
         try{
             response = client.search(searchRequest, RequestOptions.DEFAULT);
         } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        SearchHit[] searchHits = response.getHits().getHits();
+        return
+                Arrays.stream(searchHits)
+                        .map(hit -> JSON.parseObject(hit.getSourceAsString(), Hotel.class))
+                        .collect(Collectors.toList());
+    }
+
+
+    public List<Hotel> getAll(){
+        QueryBuilder query = QueryBuilders.matchAllQuery();
+        SearchSourceBuilder builder = new SearchSourceBuilder().query(query).size(1000);
+        SearchRequest searchRequest = new SearchRequest().indices(index);
+        searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
+        searchRequest.source(builder);
+
+        SearchResponse response = null;
+        try {
+            response = client.search(searchRequest, RequestOptions.DEFAULT);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

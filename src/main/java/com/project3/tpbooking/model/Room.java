@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
@@ -13,11 +14,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Accessors(chain = true)
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
-    private Integer id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name="hotel_id", nullable=false)
